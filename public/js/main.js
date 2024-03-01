@@ -92,6 +92,57 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('There has been a problem with your fetch operation:', error);
         }
     }
+    function addRandomPhotosCarousels() {
+        const photoCells = document.querySelectorAll('.user-list tr td:nth-child(4)');
+        
+        
+
+        photoCells.forEach((cell, index) => {
+            const carouselId = `carouselExample${index}`;
+            const carouselHTML = `
+                <div id="${carouselId}" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://picsum.photos/seed/${Math.random()}/100/100" class="d-block w-100" alt="Random Image">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://picsum.photos/seed/${Math.random()}/100/100" class="d-block w-100" alt="Random Image">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://picsum.photos/seed/${Math.random()}/100/100" class="d-block w-100" alt="Random Image">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#${carouselId}" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#${carouselId}" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+
+                </div>
+            `;
+
+            // Empty the cell and append the carousel
+            cell.innerHTML = carouselHTML;
+        });
+    }
+    function shouldAddCarousels() {
+        const fourthTdElements = document.querySelectorAll('.user-list tr td:nth-child(4)');
+    
+        // Check if any of these elements has an ID of 'photo'
+        for (let i = 0; i < fourthTdElements.length; i++) {
+            if (fourthTdElements[i].id === 'photo') {
+                return true; // If found, return true
+            }
+        }
+        return false; // If none found, return false
+    }
+    if (shouldAddCarousels()) {
+        addRandomPhotosCarousels();
+    }
+    
 });
 
 function displayJoke(jokeData) {
@@ -162,3 +213,6 @@ async function fetchRandomAnimeGif() {
         console.error('Error fetching random anime GIF:', error);
     }
 }
+
+
+

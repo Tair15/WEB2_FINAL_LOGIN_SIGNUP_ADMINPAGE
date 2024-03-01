@@ -9,8 +9,8 @@ function authUser(req, res, next) {
 }
 
 function authRole(role) {
-    return (req, res, next) => {        
-        if (!req.user || req.user.role !== role) {
+    return (req, res, next) => { 
+        if (!req.user || req.user.role !== 'admin') {
             res.status(401);
             return res.send("Not allowed.");
         }

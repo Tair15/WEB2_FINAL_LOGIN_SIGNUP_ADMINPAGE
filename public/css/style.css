@@ -118,6 +118,16 @@ form .inputField > div input{
 .bg-very-dark {
   background-color: #121212 !important; /* Or any dark color you prefer */
 }
+.carousel-item {
+  height: 100px; /* Set a fixed height for the carousel items */
 
+}
+
+.carousel-item img {
+  max-height: 100px; /* Ensure the image doesn't exceed the carousel item's height */
+  width: 100px; /* Maintain the image's aspect ratio */
+  margin: auto; /* Center the image within the item */
+  object-fit: cover; /* Cover the area without distorting the image */
+}
 
   
